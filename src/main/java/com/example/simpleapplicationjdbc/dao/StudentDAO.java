@@ -5,8 +5,13 @@ import com.example.simpleapplicationjdbc.entity.Student;
 import java.util.List;
 
 public interface StudentDAO {
-    void create(String name, Integer age);
+    void create(Student student);
 
-    Student getStudent(Integer id);
-    List<Student> listStudents();
+    Student findByStudentId(Integer id);
+
+    List<Student> findAll();
+
+    void update(Integer id, Integer age);
+    void delete(Integer id);
+    String findStudentNameById(Long id);
 }

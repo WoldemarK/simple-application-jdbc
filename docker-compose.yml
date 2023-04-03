@@ -4,7 +4,7 @@ services:
 
   postgres:
     image: postgres:alpine
-    container_name: JPoint
+    container_name: postgres
     restart: always
     hostname: postgres
     ports:
