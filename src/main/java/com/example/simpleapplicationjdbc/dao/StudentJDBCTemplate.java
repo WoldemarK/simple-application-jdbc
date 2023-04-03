@@ -15,23 +15,23 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StudentJDBCTemplate implements StudentDAO {
     @Value("${LISTS_STUDENTS}")
-    private String getAllStudent;
+    private String findAllStudent;
     @Value("${CREATE}")
-    private String CREATE;
+    private String create;
     @Value("${GET_ID_STUDENT}")
-    private String GET_ID_STUDENT;
+    private String getIdStudent;
     @Value("${UPDATE}")
-    private String UPDATE;
+    private String update;
     @Value("${DELETE_STUDENT}")
-    private String DELETE_STUDENT;
+    private String deleteStudent;
     @Value("${GET_NAME_BY_ID_STUDENT}")
-    private String GET_NAME_BY_ID_STUDENT;
+    private String findNameByIdStudentT;
     public final JdbcTemplate jdbcTemplate;
 
 
     @Override
     public void create(Student student) {
-        jdbcTemplate.update(CREATE);
+        jdbcTemplate.update(create);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class StudentJDBCTemplate implements StudentDAO {
         log.info("Поиск по ID произведен " + id);
         return jdbcTemplate.queryForObject
                 (
-                        GET_ID_STUDENT,
+                        getIdStudent,
                         new Object[]{id},
                         new StudentMapper()
                 );
@@ -51,7 +51,7 @@ public class StudentJDBCTemplate implements StudentDAO {
         return jdbcTemplate.query
 
                 (
-                        getAllStudent,
+                        findAllStudent,
                         new StudentMapper()
                 );
     }
@@ -59,13 +59,13 @@ public class StudentJDBCTemplate implements StudentDAO {
     @Override
     public void update(Integer id, Integer age) {
         log.info("Произведено обновление данных о студенте " + id + " " + age);
-        jdbcTemplate.update(UPDATE, age, id);
+        jdbcTemplate.update(update, age, id);
     }
 
     @Override
     public void delete(Integer id) {
         log.info("Произведено удаление студента" + id);
-        jdbcTemplate.update(DELETE_STUDENT, id);
+        jdbcTemplate.update(deleteStudent, id);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class StudentJDBCTemplate implements StudentDAO {
         log.info("Поиск имени студента по идентификатору ID " + id);
         return jdbcTemplate.queryForObject
                 (
-                        GET_NAME_BY_ID_STUDENT,
+                        findNameByIdStudentT,
                         new Object[]{id}, String.class
                 );
     }
