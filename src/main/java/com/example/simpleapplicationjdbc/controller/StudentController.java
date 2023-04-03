@@ -1,5 +1,6 @@
 package com.example.simpleapplicationjdbc.controller;
 
+import com.example.simpleapplicationjdbc.DTO.StudentDTO;
 import com.example.simpleapplicationjdbc.dao.StudentDAOImpl;
 import com.example.simpleapplicationjdbc.entity.Student;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,7 @@ public class StudentController {
     private final StudentDAOImpl st;
 
     @GetMapping("/all")
-    public List<Student> findAll() {
+    public List<StudentDTO> findAll() {
         return st.findAll();
     }
 
@@ -28,7 +29,12 @@ public class StudentController {
     }
 
     @PutMapping("/update/{id}/{age}")
-    public void update(@PathVariable("id") Integer id,@PathVariable("age") Integer age){
-         st.update(id,age);
+    public void update(@PathVariable("id") Integer id, @PathVariable("age") Integer age) {
+        st.update(id, age);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable("id") Integer id) {
+        st.delete(id);
     }
 }

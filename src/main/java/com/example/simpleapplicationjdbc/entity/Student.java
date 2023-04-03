@@ -1,6 +1,10 @@
 package com.example.simpleapplicationjdbc.entity;
 
+import lombok.Builder;
+import lombok.Data;
 
+@Data
+@Builder
 public class Student {
     private Integer id;
     private Integer age;
@@ -13,38 +17,5 @@ public class Student {
     }
 
     public Student() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", age=" + age +
-                ", name='" + name + '\'' +
-                '}';
     }
 }

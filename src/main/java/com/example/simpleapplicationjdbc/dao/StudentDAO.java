@@ -1,5 +1,6 @@
 package com.example.simpleapplicationjdbc.dao;
 
+import com.example.simpleapplicationjdbc.DTO.StudentDTO;
 import com.example.simpleapplicationjdbc.entity.Student;
 
 import java.util.List;
@@ -9,9 +10,9 @@ public interface StudentDAO {
 
     Student findByStudentId(Integer id);
 
-    List<Student> findAll();
+    List<StudentDTO> findAll();
 
     void update(Integer id, Integer age);
     void delete(Integer id);
-    String findStudentNameById(Long id);
+    String findStudentNameById(Integer id);
 }
