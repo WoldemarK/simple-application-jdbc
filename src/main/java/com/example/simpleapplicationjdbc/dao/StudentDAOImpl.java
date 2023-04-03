@@ -13,7 +13,7 @@ import java.util.List;
 @Slf4j
 @Repository
 @RequiredArgsConstructor
-public class StudentJDBCTemplate implements StudentDAO {
+public class StudentDAOImpl implements StudentDAO {
     @Value("${LISTS_STUDENTS}")
     private String findAllStudent;
     @Value("${CREATE}")
@@ -31,7 +31,14 @@ public class StudentJDBCTemplate implements StudentDAO {
 
     @Override
     public void create(Student student) {
-        jdbcTemplate.update(create);
+        log.info("Добавление нового Student " + student.getName());
+        jdbcTemplate.update
+                (
+                        create,
+                        student.getId(),
+                        student.getName(),
+                        student.getAge()
+                );
     }
 
     @Override
@@ -59,7 +66,7 @@ public class StudentJDBCTemplate implements StudentDAO {
     @Override
     public void update(Integer id, Integer age) {
         log.info("Произведено обновление данных о студенте " + id + " " + age);
-        jdbcTemplate.update(update, age, id);
+        jdbcTemplate.update(update, id, age);
     }
 
     @Override
